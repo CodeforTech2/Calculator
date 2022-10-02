@@ -6,3 +6,7 @@
 body {
     background-image: linear-gradient(to right, rgb(122, 6, 122), rgb(7, 102, 143));
 }
+
+#calculator {
+    background-color: rgb(53, 52, 52);
+}
