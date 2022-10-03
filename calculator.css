@@ -3,10 +3,64 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-white: #ededed;
+}
+
 body {
-    background-image: linear-gradient(to right, rgb(122, 6, 122), rgb(7, 102, 143));
+    background: linear-gradient(45deg, rgb(238, 5, 238), rgb(93, 4, 171), rgb(9, 211, 237));
+    height: 100vh;
+}
+
+#main {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #calculator {
     background-color: rgb(53, 52, 52);
+    width: 400px;
+    height: 550px;
+    color: var(--primary-white);
 }
+
+/*========  Top bar with control buttons  =========*/
+#top {
+    padding: 5px;
+}
+
+#top p {
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding: 5px;
+}
+.control-buttons {
+    float: right;
+    padding: 5px;
+}
+
+.fa-solid {
+    margin: 0 5px;
+}
+
+/*========  Display top  =========*/
+.display-top {
+    padding: 5px;
+}
+
+.display-text {
+    display: inline-block;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.history {
+    float: right;
+    padding: 5px;
+}
+
+/*========  Display screen  =========*/
