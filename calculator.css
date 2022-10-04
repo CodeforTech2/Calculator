@@ -91,6 +91,8 @@ body {
     font-size: 20px;
     border: 1px solid gray;
     padding: 12px;
+    background-color: rgb(53, 52, 52);
+    color: #ededed;
 }
 
 .btn:hover {
