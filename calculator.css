@@ -42,6 +42,15 @@ body {
 
 .exit {
     margin: 0 5px;
+    background-color: rgb(53, 52, 52);
+    color: var(--primary-white);
+    font-size: 15px;
+    text-align: center;
+    border: 1px solid rgb(134, 131, 131);
+}
+
+.exit:hover {
+    background-color: rgb(111, 109, 109);
 }
 
 /*========  Display top  =========*/
@@ -64,6 +73,9 @@ body {
 
 /*========  Display Results  =========*/
 #display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     height: 120px;
     background-color: rgb(61, 61, 61);
     margin: 10px;
@@ -71,10 +83,13 @@ body {
 .results {
     height: 100%;
     display: flex;
-    justify-content: flex-end;
     align-items: flex-end;
-    font-size: 50px;
+    font-size: 30px;
     padding: 0 10px;
+}
+
+.previous-results {
+    color: gray;
 }
 
 /*========  Buttons  =========*/
@@ -103,10 +118,18 @@ body {
     background-color: rgb(18, 18, 18);
 }
 
+#backspace {
+    background-color: rgb(131, 18, 18);
+}
+
+#backspace:hover {
+    background-color: rgb(182, 21, 21);
+}
+
 .equal {
-    background-color: rgb(134, 21, 21);
+    background-color: rgb(27, 116, 15);
 }
 
 .equal:hover {
-    background-color: rgb(193, 8, 8);
+    background-color: rgb(31, 175, 12);
 }

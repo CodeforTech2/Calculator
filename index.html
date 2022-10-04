@@ -14,9 +14,9 @@
         <div id="calculator">
             <div id="top">
                 <div class="control-buttons">
-                    <span class="exit">_</span>
-                    <span class="exit">@</span>
-                    <span class="exit">X</span>
+                    <button class="exit" type="button">_</button>
+                    <button class="exit" type="button">#</button>
+                    <button class="exit" type="button">X</button>
                 </div>
                 <p>Calculator</p>
             </div>
@@ -25,7 +25,8 @@
                 <i class="fa-solid fa-clock-rotate-left history"></i>
             </div>
             <div id="display">
-                <p class="results">0</p>
+                <p class="previous-results results">Previous Results</p>
+                <p class="current-results results">Current Results</p>
             </div>
             <div id="buttons">
                 <button class="btn" id="percentage" type="button">%</button>
@@ -36,27 +37,27 @@
                 <button class="btn" type="button" id="one-divide-x">1/x</button>
                 <button class="btn" type="button" id="square">x<span>&#178;</span></button>
                 <button class="btn" type="button" id="radical"><span>&#8730;</span>x</button>
-                <button class="btn" type="button" id="divide"><span>&#247;</span></button>
+                <button class="btn" type="button" id="divide" data-key="111"><span>&#247;</span></button>
             
                 <button class="btn number" type="button" id="7" data-key="55">7</button>
                 <button class="btn number" type="button" id="8" data-key="56">8</button>
                 <button class="btn number" type="button" id="9" data-key="57">9</button>
-                <button class="btn" type="button" id="times">x</button>
+                <button class="btn" type="button" id="multiply" data-key="106">x</button>
 
                 <button class="btn number" type="button" id="4" data-key="52">4</button>
                 <button class="btn number" type="button" id="5" data-key="53">5</button>
                 <button class="btn number" type="button" id="6" data-key="56">6</button>
-                <button class="btn" type="button" id="minus">-</button>
+                <button class="btn" type="button" id="subtract" data-key="109">-</button>
 
                 <button class="btn number" type="button" id="1" data-key="49">1</button>
                 <button class="btn number" type="button" id="2" data-key="50">2</button>
                 <button class="btn number" type="button" id="3" data-key="51">3</button>
-                <button class="btn" type="button" id="plus">+</button>
+                <button class="btn" type="button" id="add" data-key="107">+</button>
 
                 <button class="btn number" type="button" id="positive-negative"><span>&#177;</span></button>
                 <button class="btn number" type="button" id="0" data-key="48">0</button>
                 <button class="btn number" type="button" id="period">.</button>
-                <button class="btn equal" type="button" id="equal">=</button>
+                <button class="btn equal" type="button" id="return" data-key="13">=</button>
             </div>
         </div>
 
