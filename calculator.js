@@ -12,7 +12,7 @@ btns.forEach(btn => btn.addEventListener('click', (e) => {
     
 }));
 
-function select(e) {
+function matchKey(e) {
     const number = document.querySelector(`button[data-key = "${e.keyCode}"]`);
     if (!number) return;
     console.log(number);
@@ -20,7 +20,7 @@ function select(e) {
 }
 
 
-window.addEventListener('keydown', select);
+window.addEventListener('keydown', matchKey);
 
 // Function to reset all calculation made before
 function resetAll() {
