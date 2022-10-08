@@ -18,10 +18,9 @@ btns.forEach(btn => btn.addEventListener('click', (e) => {
 function matchKey(e) {
     const number = document.querySelector(`button[key = "${e.key}"]`);
     if (!number) return;
-    // console.log(number);
     // currentResult.innerHTML += number.textContent;
     // console.log(currentResult.innerHTML);
-    // console.log(number.classList.contains('number'));
+    console.log(number.classList.contains('number'));
     if (number.classList.contains('number')) {
         currentResult.innerHTML += number.textContent;
         // console.log(currentResult.innerHTML);
@@ -36,7 +35,6 @@ function matchKey(e) {
         console.log(secondValue);
     }
 }
-
 
 window.addEventListener('keydown', matchKey);
 
@@ -55,3 +53,19 @@ function resetEntry() {
     })
 }
 resetEntry();
+
+function add(a, b) {
+    return a + b;
+};
+
+function substract(a, b) {
+    return a - b;
+}
+
+function multiply(a, b) {
+    return a * b;
+}
+
+function divide(a, b) {
+    return a / b;
+}
