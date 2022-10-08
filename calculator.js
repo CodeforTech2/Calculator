@@ -13,7 +13,7 @@ btns.forEach(btn => btn.addEventListener('click', (e) => {
 }));
 
 function matchKey(e) {
-    const number = document.querySelector(`button[data-key = "${e.keyCode}"]`);
+    const number = document.querySelector(`button[key = "${e.key}"]`);
     if (!number) return;
     console.log(number);
     currentResult.innerHTML = number.textContent;
