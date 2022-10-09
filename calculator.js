@@ -8,6 +8,8 @@ const btnsOperators = document.querySelectorAll('.operator');
 const clearAll = document.querySelector('#clear-all');
 const clearEntry = document.querySelector('#clear-entry');
 const equal = document.querySelector('.equal');
+const point = document.getElementById('period');
+const deleteNumber = document.querySelector('#backspace');
 const currentResult = document.querySelector('.current-result');
 const previousResult = document.querySelector('.previous-result');
 
@@ -24,14 +26,17 @@ btnsOperators.forEach(btn => btn.addEventListener('click', (e) => {
 equal.addEventListener('click', evaluate);
 clearAll.addEventListener('click', resetAll);
 clearEntry.addEventListener('click', resetEntry);
+point.addEventListener('click', appendPoint);
+deleteNumber.addEventListener('click', deleteNr);
 
 //Use calculator with keyboard
 function matchKey(e) {
     const number = document.querySelector(`button[key = "${e.key}"]`);
-    if (!number) return;
     if (e.key >= 0 && e.key <= 9) appendNumber(number.textContent);
+    if (e.key === '.') appendPoint();
     if (e.key === 'Enter' || e.key === '=') evaluate();
     if (e.key === 'Escape') resetAll();
+    if (e.key === 'Backspace') deleteNr();
     if (e.key === '/' || e.key === '*' || e.key === '-' || e.key === '+') setOperation(number.textContent);
 }
 window.addEventListener('keydown', matchKey);
@@ -66,6 +71,15 @@ function evaluate() {
     previousResult.textContent = `${firstOperand} ${currentOperation} ${secondOperand}`;
     currentOperation = null;
 };
+
+function deleteNr() {
+    currentResult.textContent = currentResult.textContent.toString().slice(0, -1);
+};
+
+function appendPoint() {
+    if (currentResult.textContent.includes('.')) return;
+    currentResult.textContent += '.';
+}
 
 function roundResult(number) {
     return Math.round(number * 1000) / 1000
@@ -109,7 +123,7 @@ function divide(a, b) {
     return a / b;
 };
 
-//
+
 function operate(operator, a, b) {
     a = Number(a);
     b = Number(b);
@@ -132,9 +146,6 @@ function operate(operator, a, b) {
             return null;
     };
 };
-
-// TO DO: appendPoint and Delete number functions
-
 
 // Make the rest of the buttons functional
 // After equal is press and then start typing numbers, clear currentResult and start over
