@@ -7,12 +7,14 @@ const previousResult = document.querySelector('.previous-result');
 const clearAll = document.querySelector('#clear-all');
 const clearEntry = document.querySelector('#clear-entry');
 
+//Use calculator with GUI 
 btns.forEach(btn => btn.addEventListener('click', (e) => {
     console.log(e.target);
     const firstNumber = e.target.innerHTML; 
     // currentResult.innerHTML += firstNumber;
+    appendNumber(firstNumber)
 }));
-
+//Use calculator with keyboard
 function matchKey(e) {
     const number = document.querySelector(`button[key = "${e.key}"]`);
     if (!number) return;
@@ -24,16 +26,15 @@ function matchKey(e) {
     //     appendNumber(number);
     // } 
 }
-
 window.addEventListener('keydown', matchKey);
 
 //Append number to currentResults
 function appendNumber(nr) {
     if (currentResult.textContent === '0') {
-        currentResult.textContent = '';
+        resetScreen();
     }
     currentResult.textContent += nr;
-}
+} 
 
 //Reset screen/eliminate 0 to start adding numbers
 function resetScreen() {
@@ -56,6 +57,7 @@ function resetEntry() {
 }
 resetEntry();
 
+//The 4 operators basic functions
 function add(a, b) {
     return a + b;
 };
@@ -70,4 +72,9 @@ function multiply(a, b) {
 
 function divide(a, b) {
     return a / b;
+}
+
+//
+function operate(operator, firstOperand, secondOperand) {
+
 }
