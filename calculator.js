@@ -1,13 +1,15 @@
 let firstOperand = '';
 let secondOperand = '';
 let currentOperation = null;
+let shouldResetScreen = false;
 
 const btnsNumbers = document.querySelectorAll('.number');
 const btnsOperators = document.querySelectorAll('.operator');
 const clearAll = document.querySelector('#clear-all');
 const clearEntry = document.querySelector('#clear-entry');
-let currentResult = document.querySelector('.current-result');
-let previousResult = document.querySelector('.previous-result');
+const equal = document.querySelector('.equal')
+const currentResult = document.querySelector('.current-result');
+const previousResult = document.querySelector('.previous-result');
 
 //Use calculator with GUI 
 btnsNumbers.forEach(btn => btn.addEventListener('click', (e) => {
@@ -18,6 +20,8 @@ btnsOperators.forEach(btn => btn.addEventListener('click', (e) => {
     // console.log(e.target);
     setOperation(btn.textContent);
 }));
+
+equal.addEventListener('click', evaluate);
 
 //Use calculator with keyboard
 function matchKey(e) {
@@ -33,25 +37,32 @@ window.addEventListener('keydown', matchKey);
 
 //Append number to currentResults
 function appendNumber(nr) {
-    if (currentResult.textContent === '0') {
+    if (currentResult.textContent === '0' || shouldResetScreen) {
         resetScreen();
     }
     currentResult.textContent += nr;
+    shouldResetScreen = false;
 };
 
 //Function to set the current operation
 function setOperation(operator) {
+    if (currentOperation !== null) evaluate();
     firstOperand = currentResult.textContent;
-    console.log(firstOperand);
+    // console.log(firstOperand);
     currentOperation = operator;
     console.log(operator);
-    previousResult.textContent = `${firstOperand} ${currentOperation}` 
+    previousResult.textContent = `${firstOperand} ${currentOperation}`;
+    shouldResetScreen = true;
 };
-setOperation();
+// setOperation();
 
 //Calculate the operations
 function evaluate() {
-
+    secondOperand = currentResult.textContent;
+    console.log(secondOperand);
+    currentResult.textContent = operate(currentOperation, firstOperand, secondOperand);
+    console.log(operate(currentOperation, firstOperand, secondOperand));
+    previousResult.textContent = `${firstOperand} ${currentOperation} ${secondOperand}`
 };
 
 //Reset screen/eliminate 0 to start adding numbers
@@ -99,7 +110,7 @@ function operate(operator, a, b) {
 
     switch(operator) {
         case '+':
-            return add(a + b);
+            return add(a, b);
             break;
         case '-':
             return substract(a, b);
