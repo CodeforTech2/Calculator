@@ -5,13 +5,14 @@ let shouldResetScreen = false;
 
 const btnsNumbers = document.querySelectorAll('.number');
 const btnsOperators = document.querySelectorAll('.operator');
+const currentResult = document.querySelector('.current-result');
+const previousResult = document.querySelector('.previous-result');
 const clearAll = document.querySelector('#clear-all');
 const clearEntry = document.querySelector('#clear-entry');
 const equal = document.querySelector('.equal');
-const point = document.getElementById('period');
 const deleteNumber = document.querySelector('#backspace');
-const currentResult = document.querySelector('.current-result');
-const previousResult = document.querySelector('.previous-result');
+const point = document.getElementById('period');
+const percentage = document.getElementById('percentage');
 
 //Use calculator with GUI 
 btnsNumbers.forEach(btn => btn.addEventListener('click', (e) => {
@@ -28,6 +29,7 @@ clearAll.addEventListener('click', resetAll);
 clearEntry.addEventListener('click', resetEntry);
 point.addEventListener('click', appendPoint);
 deleteNumber.addEventListener('click', deleteNr);
+percentage.addEventListener('click', getPercentage)
 
 //Use calculator with keyboard
 function matchKey(e) {
@@ -41,6 +43,10 @@ function matchKey(e) {
 }
 window.addEventListener('keydown', matchKey);
 
+function getPercentage() {
+    // currentResult.textContent = 
+    //il fac ca pe appendpoint doar 1 data sa fie folosit butonul
+}
 //Append number to currentResults
 function appendNumber(nr) {
     if (currentResult.textContent === '0' || shouldResetScreen) {
