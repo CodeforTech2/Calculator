@@ -2,18 +2,21 @@ let firstOperand = '';
 let secondOperand = '';
 let currentOperation = null;
 
-const btns = document.querySelectorAll('.btn');
-const currentResult = document.querySelector('.current-result');
-const previousResult = document.querySelector('.previous-result');
+const btnsNumbers = document.querySelectorAll('.number');
+const btnsOperators = document.querySelectorAll('.operator');
 const clearAll = document.querySelector('#clear-all');
 const clearEntry = document.querySelector('#clear-entry');
+let currentResult = document.querySelector('.current-result');
+let previousResult = document.querySelector('.previous-result');
 
 //Use calculator with GUI 
-btns.forEach(btn => btn.addEventListener('click', (e) => {
-    console.log(e.target);
-    const firstNumber = e.target.innerHTML; 
-    // currentResult.innerHTML += firstNumber;
-    appendNumber(firstNumber)
+btnsNumbers.forEach(btn => btn.addEventListener('click', (e) => {
+    // console.log(e.target);
+    appendNumber(btn.textContent);
+}));
+btnsOperators.forEach(btn => btn.addEventListener('click', (e) => {
+    // console.log(e.target);
+    setOperation(btn.textContent);
 }));
 
 //Use calculator with keyboard
@@ -22,8 +25,8 @@ function matchKey(e) {
     if (!number) return;
     appendNumber(number.textContent);
     if (number.classList.contains('operator')) {
-        firstOperand = appendNumber(number.textContent);
-        console.log(firstOperand);
+        // console.log(number.textContent)
+       setOperation(number.textContent);
     }
 }
 window.addEventListener('keydown', matchKey);
@@ -34,7 +37,22 @@ function appendNumber(nr) {
         resetScreen();
     }
     currentResult.textContent += nr;
-} 
+};
+
+//Function to set the current operation
+function setOperation(operator) {
+    firstOperand = currentResult.textContent;
+    console.log(firstOperand);
+    currentOperation = operator;
+    console.log(operator);
+    previousResult.textContent = `${firstOperand} ${currentOperation}` 
+};
+setOperation();
+
+//Calculate the operations
+function evaluate() {
+
+};
 
 //Reset screen/eliminate 0 to start adding numbers
 function resetScreen() {
@@ -72,11 +90,6 @@ function multiply(a, b) {
 
 function divide(a, b) {
     return a / b;
-};
-
-//Function to set the curent operation
-function setOperation() {
-
 };
 
 //
