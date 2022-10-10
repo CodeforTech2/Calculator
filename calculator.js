@@ -13,6 +13,8 @@ const equal = document.querySelector('.equal');
 const deleteNumber = document.querySelector('#backspace');
 const point = document.getElementById('period');
 const percentage = document.getElementById('percentage');
+const square = document.getElementById('square');
+const radical = document.getElementById('radical');
 
 //Use calculator with GUI 
 btnsNumbers.forEach(btn => btn.addEventListener('click', (e) => {
@@ -29,7 +31,9 @@ clearAll.addEventListener('click', resetAll);
 clearEntry.addEventListener('click', resetEntry);
 point.addEventListener('click', appendPoint);
 deleteNumber.addEventListener('click', deleteNr);
-percentage.addEventListener('click', getPercentage)
+percentage.addEventListener('click', getPercentage);
+square.addEventListener('click', getSquare);
+radical.addEventListener('click', getRadical);
 
 //Use calculator with keyboard
 function matchKey(e) {
@@ -44,12 +48,35 @@ function matchKey(e) {
 window.addEventListener('keydown', matchKey);
 
 function getPercentage() {
-    if(currentResult.textContent.includes('%')) return;
     firstOperand = currentResult.textContent;
     currentResult.textContent += '%';
     previousResult.textContent = currentResult.textContent;
-    currentResult.textContent = Number(firstOperand / 100);
+    currentResult.textContent = roundResult(Number(firstOperand / 100));
+    shouldResetScreen = true;
+};
+
+function getSquare() {
+    firstOperand = currentResult.textContent;
+    currentResult.innerHTML += '<span>&#178;</span>';
+    previousResult.textContent = currentResult.textContent;
+    currentResult.textContent = roundResult(Math.pow(Number(firstOperand), 2))
+    shouldResetScreen = true;
 }
+
+function getRadical() {
+    if (currentResult.textContent === '0' || shouldResetScreen) {
+        resetScreen();
+    }
+    // firstOperand = currentResult.textContent;
+    currentResult.innerHTML += '&#8730';
+    console.log(currentResult.textContent);
+    if (currentResult.innerHTML = '&#8730') {
+        console.log(true)
+    }
+}
+
+
+
 //Append number to currentResults
 function appendNumber(nr) {
     if (currentResult.textContent === '0' || shouldResetScreen) {
