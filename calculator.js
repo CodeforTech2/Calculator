@@ -44,7 +44,7 @@ function matchKey(e) {
     if (e.key === 'Escape') resetAll();
     if (e.key === 'Backspace') deleteNr();
     if (e.key === '/' || e.key === '*' || e.key === '-' || e.key === '+') setOperation(e.key);
-}
+};
 window.addEventListener('keydown', matchKey);
 
 function getPercentage() {
@@ -61,21 +61,19 @@ function getSquare() {
     previousResult.textContent = currentResult.textContent;
     currentResult.textContent = roundResult(Math.pow(Number(firstOperand), 2))
     shouldResetScreen = true;
-}
+};
 
 function getRadical() {
-    if (currentResult.textContent === '0' || shouldResetScreen) {
-        resetScreen();
+    if (currentResult.textContent === '0') {
+        currentResult.textContent = 'Enter number first!';
+        shouldResetScreen = true;
+        return;
     }
-    // firstOperand = currentResult.textContent;
-    currentResult.innerHTML += '&#8730';
-    console.log(currentResult.textContent);
-    if (currentResult.innerHTML = '&#8730') {
-        console.log(true)
-    }
-}
-
-
+    firstOperand = currentResult.textContent;
+    previousResult.innerHTML += '&#8730';
+    previousResult.innerHTML = `${'&#8730'} ${firstOperand}`;
+    return currentResult.textContent = roundResult(Math.sqrt(firstOperand));
+};
 
 //Append number to currentResults
 function appendNumber(nr) {
@@ -102,6 +100,9 @@ function evaluate() {
         alert("You can't divide by 0!");
         return;
     }
+
+
+
     secondOperand = currentResult.textContent;
     currentResult.textContent = roundResult(operate(currentOperation, firstOperand, secondOperand));
     previousResult.textContent = `${firstOperand} ${currentOperation} ${secondOperand}`;
