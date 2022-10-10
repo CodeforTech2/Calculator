@@ -33,19 +33,22 @@ percentage.addEventListener('click', getPercentage)
 
 //Use calculator with keyboard
 function matchKey(e) {
-    const number = document.querySelector(`button[key = "${e.key}"]`);
-    if (e.key >= 0 && e.key <= 9) appendNumber(number.textContent);
+    // const number = document.querySelector(`button[key = "${e.key}"]`);
+    if (e.key >= 0 && e.key <= 9) appendNumber(e.key);
     if (e.key === '.') appendPoint();
     if (e.key === 'Enter' || e.key === '=') evaluate();
     if (e.key === 'Escape') resetAll();
     if (e.key === 'Backspace') deleteNr();
-    if (e.key === '/' || e.key === '*' || e.key === '-' || e.key === '+') setOperation(number.textContent);
+    if (e.key === '/' || e.key === '*' || e.key === '-' || e.key === '+') setOperation(e.key);
 }
 window.addEventListener('keydown', matchKey);
 
 function getPercentage() {
-    // currentResult.textContent = 
-    //il fac ca pe appendpoint doar 1 data sa fie folosit butonul
+    if(currentResult.textContent.includes('%')) return;
+    firstOperand = currentResult.textContent;
+    currentResult.textContent += '%';
+    previousResult.textContent = currentResult.textContent;
+    currentResult.textContent = Number(firstOperand / 100);
 }
 //Append number to currentResults
 function appendNumber(nr) {
