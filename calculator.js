@@ -15,6 +15,18 @@ const point = document.getElementById('period');
 const percentage = document.getElementById('percentage');
 const square = document.getElementById('square');
 const radical = document.getElementById('radical');
+const oneDivide = document.getElementById('one-divide-x');
+
+
+equal.addEventListener('click', evaluate);
+clearAll.addEventListener('click', resetAll);
+clearEntry.addEventListener('click', resetEntry);
+point.addEventListener('click', appendPoint);
+deleteNumber.addEventListener('click', deleteNr);
+percentage.addEventListener('click', getPercentage);
+square.addEventListener('click', getSquare);
+radical.addEventListener('click', getRadical);
+oneDivide.addEventListener('click', oneDivideByNumber);
 
 //Use calculator with GUI 
 btnsNumbers.forEach(btn => btn.addEventListener('click', (e) => {
@@ -25,15 +37,6 @@ btnsOperators.forEach(btn => btn.addEventListener('click', (e) => {
     // console.log(e.target);
     setOperation(btn.textContent);
 }));
-
-equal.addEventListener('click', evaluate);
-clearAll.addEventListener('click', resetAll);
-clearEntry.addEventListener('click', resetEntry);
-point.addEventListener('click', appendPoint);
-deleteNumber.addEventListener('click', deleteNr);
-percentage.addEventListener('click', getPercentage);
-square.addEventListener('click', getSquare);
-radical.addEventListener('click', getRadical);
 
 //Use calculator with keyboard
 function matchKey(e) {
@@ -46,6 +49,15 @@ function matchKey(e) {
     if (e.key === '/' || e.key === '*' || e.key === '-' || e.key === '+') setOperation(e.key);
 };
 window.addEventListener('keydown', matchKey);
+
+function oneDivideByNumber() {
+    if (currentResult.textContent === '0') return;
+    firstOperand = currentResult.textContent;
+    previousResult.textContent = `1 / ${firstOperand}` ;
+    console.log(previousResult.textContent);
+    currentResult.textContent = roundResult(1 / firstOperand);
+    shouldResetScreen = true;
+}
 
 function getPercentage() {
     firstOperand = currentResult.textContent;
@@ -72,7 +84,8 @@ function getRadical() {
     firstOperand = currentResult.textContent;
     previousResult.innerHTML += '&#8730';
     previousResult.innerHTML = `${'&#8730'} ${firstOperand}`;
-    return currentResult.textContent = roundResult(Math.sqrt(firstOperand));
+    currentResult.textContent = roundResult(Math.sqrt(firstOperand));
+    shouldResetScreen = true;
 };
 
 //Append number to currentResults
