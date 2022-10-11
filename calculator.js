@@ -16,6 +16,7 @@ const percentage = document.getElementById('percentage');
 const square = document.getElementById('square');
 const radical = document.getElementById('radical');
 const oneDivide = document.getElementById('one-divide-x');
+const positiveNegative = document.getElementById('positive-negative');
 
 
 equal.addEventListener('click', evaluate);
@@ -27,6 +28,8 @@ percentage.addEventListener('click', getPercentage);
 square.addEventListener('click', getSquare);
 radical.addEventListener('click', getRadical);
 oneDivide.addEventListener('click', oneDivideByNumber);
+positiveNegative.addEventListener('click', togglePositive);
+
 
 //Use calculator with GUI 
 btnsNumbers.forEach(btn => btn.addEventListener('click', (e) => {
@@ -155,6 +158,18 @@ function resetEntry() {
         firstOperand = '';
         secondOperand = '';
 };
+
+function togglePositive() {
+    if (currentResult.textContent === '0') {
+        return currentResult.textContent = '-';
+        } 
+    if (currentResult.textContent.includes('-')){
+        currentResult.textContent = Math.abs(currentResult.textContent);
+        } 
+    else  {
+        currentResult.textContent = -Math.abs(currentResult.textContent);
+    }
+}
 
 //The 4 operators basic functions
 function add(a, b) {
