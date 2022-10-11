@@ -60,7 +60,7 @@ function oneDivideByNumber() {
     console.log(previousResult.textContent);
     currentResult.textContent = roundResult(1 / firstOperand);
     shouldResetScreen = true;
-}
+};
 
 function getPercentage() {
     firstOperand = currentResult.textContent;
@@ -116,13 +116,11 @@ function evaluate() {
         alert("You can't divide by 0!");
         return;
     }
-
-
-
     secondOperand = currentResult.textContent;
     currentResult.textContent = roundResult(operate(currentOperation, firstOperand, secondOperand));
     previousResult.textContent = `${firstOperand} ${currentOperation} ${secondOperand}`;
     currentOperation = null;
+    shouldResetScreen = true;
 };
 
 function deleteNr() {
@@ -132,7 +130,7 @@ function deleteNr() {
 function appendPoint() {
     if (currentResult.textContent.includes('.')) return;
     currentResult.textContent += '.';
-}
+};
 
 function roundResult(number) {
     return Math.round(number * 1000) / 1000
@@ -141,7 +139,7 @@ function roundResult(number) {
 //Reset screen/eliminate 0 to start adding numbers
 function resetScreen() {
     currentResult.textContent = '';
-}
+};
 
 // Function to reset all calculation made before
 function resetAll() {
@@ -169,7 +167,7 @@ function togglePositive() {
     else  {
         currentResult.textContent = -Math.abs(currentResult.textContent);
     }
-}
+};
 
 //The 4 operators basic functions
 function add(a, b) {
@@ -187,7 +185,6 @@ function multiply(a, b) {
 function divide(a, b) {
     return a / b;
 };
-
 
 function operate(operator, a, b) {
     a = Number(a);
@@ -211,6 +208,3 @@ function operate(operator, a, b) {
             return null;
     };
 };
-
-// Make the rest of the buttons functional
-// After equal is press and then start typing numbers, clear currentResult and start over
