@@ -2,7 +2,7 @@ let firstOperand = '';
 let secondOperand = '';
 let currentOperation = null;
 let shouldResetScreen = false;
-
+// test
 const btnsNumbers = document.querySelectorAll('.number');
 const btnsOperators = document.querySelectorAll('.operator');
 const currentResult = document.querySelector('.current-result');
